@@ -1,0 +1,44 @@
+BRINDES 2026 — PACOTE PWA
+=========================
+
+Este pacote cria a camada instalável (PWA) do sistema atual. O backend, as planilhas,
+os PINs e as regras do Google Apps Script permanecem no Google.
+
+URL atual do Apps Script:
+https://script.google.com/macros/s/AKfycbxCoEH84IrKhxfst1hX2ja_858kaNgQ-tWH0NoCZ4nthqLDxqEHoOMUfZkFFgRj5vn4/exec
+
+ARQUIVOS
+- index.html: tela de entrada em tela cheia, incorporando o sistema atual.
+- manifest.webmanifest: identidade e configuração de instalação.
+- sw.js: service worker; armazena somente os arquivos estáticos do PWA.
+- icons/: ícones 192x192 e 512x512.
+
+IMPORTANTE — AJUSTE NO APPS SCRIPT
+O doGet() precisa devolver HtmlOutput com XFrameOptionsMode.ALLOWALL para permitir
+a incorporação pelo GitHub Pages. Não crie um segundo doGet(). No doGet() existente,
+aplique .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL) ao HtmlOutput final.
+
+A versão preparada para este projeto mantém a chamada de estoque inicial e acrescenta:
+.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+
+Depois de salvar, implante > Gerenciar implantações > Editar implantação Web App,
+selecione Nova versão e implante. Mantenha a URL /exec atual.
+
+PUBLICAÇÃO
+1. Ative GitHub Pages em Settings > Pages.
+2. Em Build and deployment, selecione Deploy from a branch.
+3. Escolha a branch main e a pasta /(root).
+4. Salve e aguarde o GitHub publicar o endereço HTTPS.
+5. Abra o endereço no Chrome/Edge e escolha "Instalar aplicativo".
+
+SEGURANÇA E LIMITES
+- ALLOWALL permite que outros sites tentem incorporar o Web App. Mantenha as validações
+  de sessão/PIN no servidor e não coloque Code.gs nem dados da planilha neste repositório.
+- O service worker não armazena planilhas, respostas privadas, PINs ou conteúdo do Apps Script.
+  O app precisa de internet para consultar e alterar dados.
+- A faixa informativa do Google Apps Script pode continuar visível dentro do iframe;
+  o wrapper não consegue removê-la porque o conteúdo é hospedado em outro domínio.
+- A renderização do iframe depende da implantação do Apps Script com ALLOWALL e precisa
+  ser testada após a publicação.
+
+Este repositório contém somente os arquivos públicos de apresentação do PWA.
