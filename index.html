@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f3ea">
+  <meta name="description" content="Aplicativo de escolha de brindes do Grupo Fredy.">
+  <title>Brindes 2026 — Grupo Fredy</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <style>
+    :root { color-scheme: light; --bg:#f7f3ea; --ink:#252321; --line:#e5d8c8; }
+    * { box-sizing:border-box; }
+    html,body { width:100%; height:100%; margin:0; overflow:hidden; background:var(--bg); color:var(--ink); font-family:Arial,Helvetica,sans-serif; }
+    body { padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+    #app { position:relative; width:100%; height:100%; }
+    #appFrame { display:block; width:100%; height:100%; border:0; background:var(--bg); }
+    #fallback { display:none; position:absolute; z-index:5; inset:0; padding:28px; background:var(--bg); align-items:center; justify-content:center; text-align:center; }
+    #fallback .panel { max-width:440px; padding:24px; border:1px solid var(--line); border-radius:18px; background:#fffdf9; box-shadow:0 12px 35px #38251212; }
+    #fallback h1 { margin:0 0 10px; font-size:21px; }
+    #fallback p { line-height:1.55; color:#625b53; }
+    #fallback a { display:inline-block; margin-top:10px; padding:12px 18px; border-radius:10px; background:#c93636; color:white; font-weight:700; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <main id="app">
+    <iframe id="appFrame" title="Sistema Brindes 2026" src="https://script.google.com/macros/s/AKfycbxCoEH84IrKhxfst1hX2ja_858kaNgQ-tWH0NoCZ4nthqLDxqEHoOMUfZkFFgRj5vn4/exec" allow="clipboard-read; clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <section id="fallback" role="alert">
+      <div class="panel">
+        <h1>Não foi possível abrir o Brindes 2026 aqui</h1>
+        <p>O Google Apps Script precisa permitir a abertura dentro do aplicativo. Confira a configuração <b>ALLOWALL</b> indicada no arquivo LEIA-ME.</p>
+        <a href="https://script.google.com/macros/s/AKfycbxCoEH84IrKhxfst1hX2ja_858kaNgQ-tWH0NoCZ4nthqLDxqEHoOMUfZkFFgRj5vn4/exec" target="_blank" rel="noopener">Abrir sistema diretamente</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+    // O iframe pode carregar por alguns segundos; a página mantém o wrapper disponível.
+  </script>
+</body>
+</html>
