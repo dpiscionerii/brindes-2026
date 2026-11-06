@@ -11,7 +11,7 @@ ARQUIVOS
 - index.html: tela de entrada em tela cheia, incorporando o sistema atual.
 - manifest.webmanifest: identidade e configuração de instalação.
 - sw.js: service worker; armazena somente os arquivos estáticos do PWA.
-- icons/: ícones 192x192 e 512x512.
+- icons/icon.svg: ícone vetorial escalável do aplicativo.
 
 IMPORTANTE — AJUSTE NO APPS SCRIPT
 O doGet() precisa devolver HtmlOutput com XFrameOptionsMode.ALLOWALL para permitir
