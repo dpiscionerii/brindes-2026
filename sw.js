@@ -1,4 +1,4 @@
-const CACHE_NAME = 'brindes-2026-shell-v19';
+const CACHE_NAME = 'brindes-2026-shell-v20';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg'];
 
 self.addEventListener('install', event => {
